@@ -133,16 +133,16 @@ const copyToClipboard = (text: string) => {
       filteredWords.map((item, index) => (
         <div key={index} className="p-2 w-fit">
           {/* ✅ جعل الكلمة مجموعة خاصة بها */}
-          <p className="text-white bg-black p-2 rounded-full mr-2 relative group">
+          <p className="text-white bg-black p-2 rounded-full mr-2 relative group cursor-default">
             {item.word}
             {/* ✅ عرض الترجمة عند تمرير الماوس فقط على الكلمة */}
-            <div className="absolute left-0 top-full mt-0 flex flex-col gap-2 bg-slate-800 z-20 p-2 w-28 rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-transform duration-300">
+            <div className="absolute left-0 top-full mt-0 flex flex-col gap-2 bg-slate-800 z-20 p-2 w-28 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-700 ">
               {item.translate.map((t, tIndex) => (
                 <div key={tIndex} className="">
                   <div className="text-white bg-gray-700 w-full p-2 rounded-xl mx-1 flex justify-between">
                     <span>{t}</span>
                     <div className="relative">
-                      <Copy onClick={() => copyToClipboard(t)} className="bg-transparent cursor-pointer" />
+                      <Copy onClick={() => copyToClipboard(t)} className="bg-transparent hover:bg-slate-400  p-1 cursor-pointer" />
                       {copiedText === t && (
                         <div className="bg-green-600 text-white p-1 rounded-lg shadow-lg absolute z-50 left-0">
                           Copied: {copiedText}
